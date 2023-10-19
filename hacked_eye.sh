@@ -9,7 +9,7 @@ python __load.py
 PS1='Root@Hacked_Eye'
 export PS1="╭─\Hacked_Eye@Root"
 
-__ScriptVersion="0.0.1"
+__ScriptVersion="0.1.0"
 
 
 # if args have been specified, then
@@ -27,8 +27,9 @@ function usage () {
           -h|help          Display for help
           -v|version       Display for version
           -k|kill          Kill the shell
-          -neo|neofetch    display neofetch of os
-          -system-profile  display system profile
+          -neo|neofetch    Display neofetch of os
+          -system-profile  Display system prshell
+          -reload          Reload thw shell
 
 EOT
 }
@@ -146,7 +147,7 @@ function disk_util ()
 
   HOME_DISK_USED=$(df -h | grep -w '/home' | awk '{print $5}')
   HOME_DISK_USED=$(printf %s "$HOME_DISK_USED" | tr -d [="%"=])
-  HOME_DISK_AVAIL=$(( 100 - $HOME_DISK_USED ))
+  HOME_DISK_AVAIL=$(( $HOME_DISK_USED ))
 
   echo -e "........................................\nDISK UTILIZATION\n"
   echo -e "Root(/) Used\t\t:$ROOT_DISK_USED%"
@@ -179,13 +180,16 @@ function main_body() {
                neo|neofetch     ) if [ -e neofetch ]; then
                                         neofetch
                                    else :
-                                        pkg install neofetch && neofetch
+                                        neofetch
+                                        python shell_style.py
                                    fi;;
                k|kill           ) exit 1;;
                load_int         ) puss_to_internet;;
                clean            ) clear;;
                system-profile   ) use_cpu;;
-               \?               ) echo "$command: Command not found!";;
+               reload           ) clear; echo -e "Reloading..."; clear; bash hacked_eye.sh;;
+               *                ) $command; 
+                                  python shell_style.py;;
           esac
      done
 }

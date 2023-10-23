@@ -172,6 +172,7 @@ function use_cpu ()
 function main_body() {
      while :
      do
+          python color.py
           echo "$PS1"
           read command
           case $command in
@@ -188,6 +189,7 @@ function main_body() {
                clean            ) clear;;
                system-profile   ) use_cpu;;
                reload           ) clear; echo -e "Reloading..."; clear; bash hacked_eye.sh;;
+               loados           ) bash system-tool.sh;;
                *                ) $command; 
                                   python shell_style.py;;
           esac

@@ -2,7 +2,7 @@
 
 Hacked eye tool kit guide for termux
 
-v-0.1.1 
+v-0.1.9
 ==========================================================================================
 
 v-0.0.1 => normal shell 
@@ -24,6 +24,8 @@ v-0.1.0 => new command -system-profile # to show the performance of your system
 
 #How to use?
 =========
+Dont create any other file..!
+
 git clone https://github.com/Black-Walkers-Army/hacked-eye-tool-kit-guide 
 
 cd hacked-eye-tool-kit-guide 

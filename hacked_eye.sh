@@ -6,11 +6,15 @@ export HISTCONTROL=ignoreboth
 # Default command line prompt.
 PROMPT_DIRTRIM=2
 python __load.py
+clear
 PS1='Root@Hacked_Eye'
-export PS1="╭─\Hacked_Eye@Root"
+export PS1="╭─\Hacked_Eye@Root [~]-\ "
 
-__ScriptVersion="0.1.0"
+__ScriptVersion="0.1.9"
 
+echo -e "Welcome To Hacked-Eye Shell V-0.1.9
+Tap [ h/help ] for help & [ kill ] for kill the shell (ie Quit the shell) 
+"
 
 # if args have been specified, then
 # show the correct syntax to the user
@@ -19,6 +23,15 @@ if [ $# -gt 0 ] ; then
   echo "The valid syntax is ./$(basename $0)"
   exit 1
 fi
+
+function use_python_color.py () {
+python3 -c "$(cat << EOF
+
+print("\033[92m")
+	
+EOF
+)"   
+}
 
 function usage () {
      cat <<- EOT
@@ -169,11 +182,75 @@ function use_cpu ()
   cpu_util
   disk_util
 }
+function load_os_.py () {
+python3 -c "$(cat << EOF
+
+import os
+import time
+from tqdm import tqdm
+
+print("\033[90mRunning System....\033[0m")
+time.sleep(1)
+os.system('clear')
+
+for i in tqdm(range(100), desc="Loading OS...", ascii=False, ncols=100):
+    time.sleep(0.06)
+
+os.system('clear')
+
+logo="""
+\033[95m
+    %%%%%%%%%%%%%%%   %%%%%%%%%%%%%%
+    ===============   ==============
+    %#           #$   &$
+    %#           #$   %$
+    %#           #$   ^$
+    %#           #$   %%%%%%%%%%%%%%
+    %#           #$               A$
+    %#           #$               B$
+    %#           #$               C$
+    ===============   ==============
+    %%%%%%%%%%%%%%%   %%%%%%%%%%%%%%
+\033[0m
+"""
+
+pattern = logo.strip().split('\n')
+for line in pattern:
+    print(line)
+    time.sleep(0.1)
+print('\033[92m')
+
+	
+EOF
+)"
+}
+
+function load_os.sh () {
+    clear
+    echo "running system...."
+    sleep 2
+    clear
+    load_os_.py
+    PSO="╭─\Hacked_Eye@Boot-/__init__/OS"
+    while :
+    do
+        echo -e "$PSO /~ [ $(pwd) ] "
+        read command
+        case $command in
+            htop                ) htop;;
+            neo|neofetch        ) neofetch && python color.py;;
+            clean               ) clear;;
+            kill                ) exit 1 ;;
+            * 		        ) $command;;
+        esac
+    done
+}
+
 function main_body() {
      while :
      do
-          python color.py
-          echo "$PS1"
+          use_python_color.py
+          echo "$PS1 $(pwd)"
           read command
           case $command in
                h|help           ) usage;;
@@ -189,9 +266,9 @@ function main_body() {
                clean            ) clear;;
                system-profile   ) use_cpu;;
                reload           ) clear; echo -e "Reloading..."; clear; bash hacked_eye.sh;;
-               loados           ) bash system-tool.sh;;
+               loados           ) load_os.sh;;
                *                ) $command; 
-                                  python shell_style.py;;
+                                  use_python_color.py;
           esac
      done
 }

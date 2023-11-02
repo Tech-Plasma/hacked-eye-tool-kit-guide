@@ -8,7 +8,7 @@ PROMPT_DIRTRIM=2
 python __load.py
 clear
 PS1='Root@Hacked_Eye'
-export PS1="╭─\Hacked_Eye@Root [~]-\ "
+export PS1="╭─\Hacked_Eye@Root [~]\ "
 
 __ScriptVersion="0.1.9"
 
@@ -250,7 +250,7 @@ function main_body() {
      while :
      do
           use_python_color.py
-          echo "$PS1 $(pwd)"
+          echo "$PS1 [ $(pwd) ]"
           read command
           case $command in
                h|help           ) usage;;

@@ -33,6 +33,10 @@ then >
 
 git clone https://github.com/Black-Walkers-Army/hacked-eye-tool-kit-guide 
 
+cd hacked-eye-tool-kit-guide 
+
+bash requirements.sh
+
 chmod +x heyeSuperShell
 
 ./heyeSuperShell

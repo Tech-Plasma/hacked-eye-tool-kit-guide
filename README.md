@@ -22,6 +22,7 @@ v-0.0.7 => new command -reload # to reload the shell
 v-0.1.0 => new command -system-profile # to show the performance of your system 
 
 ========================
+
 v-super-shell 3.0.1 => command history, flexibal usage, collored, network speed test while downloading
 =
 #How to upgrade?

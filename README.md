@@ -27,7 +27,7 @@ v-super-shell 3.0.1 => command history, flexibal usage, collored, network speed 
 =
 #How to upgrade?
 =
-git clone https://github.com/Black-Walkers-Army/hacked-eye-tool-kit-guide 
+git clone https://github.com/Dark-Plasma-Birds/hacked-eye-tool-kit-guide/blob/main/heyeSyperShell
 
 chmod +x heyeSuperShell
 
